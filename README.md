@@ -1,4 +1,4 @@
-# NeuralHash-collision
+# Breaking-AudioSeal-Watermark
 
 
 This repository aims to answer the question of whether one can replicate AudioSeal's detector. That is, whether one can produce a classifier which admits an audio file and returns a binary as to whether the file contains AudioSeal's watermark. 
@@ -12,8 +12,7 @@ When downloading the audio files we decided to only download 1 second of each on
 To create a classifier that distinguishes between regular and watermarked samples we need to inject, for each file, the watermark. This will make it so that for each file in our dataset there are 2 versions,the regular and the watermarked. To generate a folder containing the watermarked versions of each file, follow Generating_WM_audio_files.ipynb
 At this point we have over 10,000 audio files, each 1 second long and at a sampling rate of 16,000, where half the files contain the AudioSeal watermark and the other half don't. 
 The final processing step is to convert all the audio files into 16-bit PCM, this needs to be done so that the .wav files can be succesfully decoded. To do this, just run this on your terminal:
-<pre> 
-mkdir -p fixed_wavs
+<pre> mkdir -p fixed_wavs
 for f in music_data/*.wav; do
   ffmpeg -y -i "$f" -acodec pcm_s16le -ac 1 -ar 16000 "fixed_wavs/$(basename "$f")"
 done
