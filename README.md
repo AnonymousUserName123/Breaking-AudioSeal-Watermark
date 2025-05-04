@@ -1,0 +1,10 @@
+# NeuralHash-collision
+
+NeuralHash is Apple's perceptual hash function, which converts any image into a 96-bit hash vector. It works by, first, evaluating a neural network on the image, followed by a matrix multiplication on the output of the neural network and finally applying 0,1 thresholding on the negative and non-negative values, respectively. 
+
+Our aim is to enigneer a collison for the NeuralHash, that is: for a given target hash vector, we want to take a given image whose hash disagrees with the target and alter it until its hash achieves the target (hence collision) such that the content of the image is still the same.
+
+The method for how we go about achieving this task is heavily influenced by Athalye, A. (2021). NeuralHash Collider. GitHub. https://github.com/anishathalye/neural-hash-collider . 
+I tried to use the code as a help as much as possible, but often times I wasn't able to reproduce the output and so I had to find a different way to get to the same destination using the code as a guide.  
+
+A question to ask is why bother making a new repository for a problem that's already been solved. To even access NeuralHash one needs to follow the instructions in  AsuharietYgvar/AppleNeuralHash2ONNX to get the onnx version. However to do the actual work, one needs to convert it into tensorflow so as to perform the attack. The module used in neural-hash-collider wasn't successful in doing the conversion, and so I had to seek a different method for attaining the tensorflow version of NeuralHash. And so I hope that this can be thought of as an updated version for NeuralHash collision, so that folks can still find collisions by using the method found here. A total explanation of all that needs to be known (in terms of acquisation of the model, method of attack and results) can be found in the 2 notebooks.
